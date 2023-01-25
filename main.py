@@ -2,7 +2,7 @@ N = int(input("pin down yhe number of your project:"))
 if N == 1:
     N = input("you most pin atleast 2 project :))...pleas try again: ")
 
-method_list = ['NPW', 'NEUA', 'B/C']
+method_list = ['NPW', 'EUAC', 'B/C']
 method = input("Enter Your method ( NPW , EUAC , B/C) :").upper()
 
 
@@ -22,6 +22,7 @@ if method == method_list[0]:
     result_list = []
     n = int(input("pit down your intended time(n): "))
     while i < N + 1:
+        print("PROJECT",i)
         P = int(input("pin down your intial capital(P):"))
         OC = int(input("pit down your operation cost(OC): "))
         GI = int(input("pit down your gross income(GI): "))
@@ -32,9 +33,10 @@ if method == method_list[0]:
         Res= re1 + re2 - P
         print("result:", Res)
         i += 1
-        result_list.extend(Res)
-        X= result_list.index(max(result_list))
-        print("the best choice" , X+1)
+        result_list.append(Res)
+
+    X= result_list.index(max(result_list))
+    print("the best choice: PROJECT" , X+1)
 
 def AP(m, y):
     sorat3 = m * ((m + 1) ** y)
@@ -56,18 +58,18 @@ if method == method_list[1]:
     while i < N+1:
         P = int(input("pin down your intial capital(P):"))
         OC = int(input("pit down your operation cost(OC): "))
-        GI = int(input("pit down your gross income(GI=EUAB): "))
+        GI = int(input("pit down your gross income(GI): "))
         MARR = float(input("pit down your minimum attractive range of return(MARR): "))
         SV = int(input("pit down your scrap value(SV): "))
         n = int(input("pit down your intended time(n): "))
-        re1= GI - OC
+        re1= OC - GI
         re2= P* AP(MARR , n)
         re3= SV* AF(MARR , n)
-        Res2= re1 - re2 + re3
+        Res2= +re1 + re2 - re3
         print("result" , Res2)
         i+=1
-        result_list2.extend(Res2)
-        X2= result_list2.index(max(result_list2))
-        print("The best choice is:" , X2+1)
+        result_list2.append(Res2)
+    X= result_list2.index(min(result_list2))
+    print("The best choice is:" , X+1)
 
 
